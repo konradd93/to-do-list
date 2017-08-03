@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.pollub.model.project.Project;
 import pl.pollub.model.task.DTO.TaskDTO;
 import pl.pollub.model.task.Task;
 import pl.pollub.model.task.TaskList;
@@ -31,15 +32,20 @@ public class TaskController {
         return taskList.add(taskDTO);
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody List<Task> getAllTasksFromList() {
+        return taskList.getAllTasks();
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO) {
         Task createdTask = taskService.createTask(taskDTO);
         return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
     }
-
-    @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<Task> getAllTasks() {
-        return taskList.getAllTasks();
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<List<Task>> getAllTasks() {
+        List<Task> allTasks = taskService.getAllTasks();
+        return new ResponseEntity<>(allTasks, HttpStatus.CREATED);
     }
 
 }
