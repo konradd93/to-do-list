@@ -24,6 +24,8 @@ public class Task {
 
     private String content;
 
+    private boolean isDone;
+
     @ManyToOne
     private Team team;
 

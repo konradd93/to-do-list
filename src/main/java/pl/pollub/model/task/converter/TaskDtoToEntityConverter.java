@@ -14,6 +14,7 @@ public class TaskDtoToEntityConverter implements Converter<TaskDTO,Task> {
         task.setContent(taskDTO.getContent());
         task.setProject(taskDTO.getProject());
         task.setTeam(taskDTO.getTeam());
+        task.setDone(taskDTO.isDone());
         return task;
     }
 }
