@@ -15,4 +15,6 @@ public class TaskDTO {
 
     private final Team team;
 
+    private final boolean isDone = false;
+
 }
