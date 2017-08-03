@@ -14,8 +14,8 @@ public class TaskListTest {
     @Test
     public void whenICreateNewTaskThenThisTaskIsOnTheTaskList() throws Exception {
         TaskList taskList = new TaskList();
-        Task created1 = taskList.add(new TaskDTO("task1"));
-        taskList.add(new TaskDTO( "task2"));
+        Task created1 = taskList.add(new TaskDTO("task1",null,null));
+        taskList.add(new TaskDTO( "task2",null,null));
 
         assertEquals(2, taskList.getAllTasks().size());
         assertTrue(taskList.getAllTasks().contains(created1));
@@ -25,7 +25,7 @@ public class TaskListTest {
     public void ICanRemoveExistingTask(){
         //given: a task
         TaskList taskList = new TaskList();
-        taskList.add(new TaskDTO( "task1"));
+        taskList.add(new TaskDTO( "task1",null,null));
 
         //when: i remove it
         Task task = taskList.getAllTasks().get(0);
