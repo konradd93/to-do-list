@@ -9,6 +9,7 @@ import pl.pollub.model.project.Project;
 import pl.pollub.model.task.Task;
 import pl.pollub.model.team.Team;
 import pl.pollub.model.user.User;
+import pl.pollub.service.EmailNotifier;
 
 import javax.sql.DataSource;
 
@@ -27,7 +28,8 @@ public class GeneralConfig {
                     Task.class,
                     User.class,
                     Project.class,
-                    Team.class
+                    Team.class,
+                    EmailNotifier.class
             );
 
             return localSessionFactoryBean;

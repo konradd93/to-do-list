@@ -20,4 +20,13 @@ public class Team {
 
     @OneToMany
     private List<User> collaborators;
+
+    public List<User> addcollaborator(User newCollaborator){
+        collaborators.add(newCollaborator);
+        return collaborators;
+    }
+
+    public Team(List<User> collaborators) {
+        this.collaborators = collaborators;
+    }
 }
