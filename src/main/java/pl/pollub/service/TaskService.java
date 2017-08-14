@@ -12,7 +12,4 @@ public interface TaskService {
 
     List<Task> getAllTasks();
 
-    Task createTaskForUser(User owner, Team contributors);
-
-    void completeTask(Long taskId);
 }

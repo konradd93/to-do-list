@@ -10,7 +10,6 @@ import pl.pollub.model.task.converter.TaskDtoToEntityConverter;
 import pl.pollub.model.team.Team;
 import pl.pollub.model.user.User;
 import pl.pollub.repository.TaskRepository;
-import pl.pollub.service.EmailNotifier;
 import pl.pollub.service.TaskService;
 import pl.pollub.service.UserService;
 
@@ -26,33 +25,6 @@ public class TaskServiceImpl implements TaskService {
     private final @NonNull TaskDtoToEntityConverter taskDtoToEntityConverter;
 
     private final @NonNull UserService userService;
-
-    private final @NonNull EmailNotifier emailNotifier;
-
-    private final AtomicLong counter = new AtomicLong();
-
-    @Override
-    public Task createTaskForUser(User owner, Team contributors){
-        Task task = new Task(owner,
-                contributors != null ? contributors : new Team(Collections.emptyList()));
-        taskRepository.save(task);
-
-        return task;
-    }
-
-    @Override
-    public void completeTask(Long taskId){
-        Task task = taskRepository.findOne(taskId);
-        Team contributors = task.getContributors();
-        contributors.addcollaborator(task.getOwner());
-
-        Set<String> emails = contributors.getCollaborators().stream()
-                .map(User::getEmail)
-                .collect(Collectors.toSet());
-
-        emailNotifier.notify(taskId, emails);
-    }
-
 
     @Override
     public Task createTask(TaskDTO taskDTO) {
