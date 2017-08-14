@@ -1,4 +1,4 @@
-package pl.pollub.service;
+package pl.pollub.service.impl;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,7 @@ import pl.pollub.model.team.DTO.TeamDTO;
 import pl.pollub.model.team.Team;
 import pl.pollub.model.team.converter.TeamDtoToEntityConverter;
 import pl.pollub.repository.TeamRepository;
+import pl.pollub.service.TeamService;
 
 import java.util.List;
 

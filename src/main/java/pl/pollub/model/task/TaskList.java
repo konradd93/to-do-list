@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Component;
 import pl.pollub.model.task.DTO.TaskDTO;
+import pl.pollub.model.task.converter.TaskDtoToEntityConverter;
 
 @Component
 public class TaskList {
@@ -13,6 +14,8 @@ public class TaskList {
     private final List<Task> tasks = new ArrayList<>();
 
     private final AtomicInteger counter = new AtomicInteger();
+
+    private final TaskDtoToEntityConverter taskDtoToEntityConverter = new TaskDtoToEntityConverter();
 
     /*public Task add(TaskDTO taskDTO){
         Task created = new Task(generateId(), taskDTO.getContent());
@@ -29,6 +32,8 @@ public class TaskList {
     }
 
     public Task add(TaskDTO taskDTO) {
-        return null;
+        Task taskEntity = taskDtoToEntityConverter.convert(taskDTO);
+        tasks.add(taskEntity);
+        return taskEntity;
     }
 }

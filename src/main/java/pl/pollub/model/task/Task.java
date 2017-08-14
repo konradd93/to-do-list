@@ -22,17 +22,21 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne
+    private User owner;
+
     private String content;
 
     private boolean isDone;
 
     @ManyToOne
-    private Team team;
+    private Team contributors;
 
     @ManyToOne
     private Project project;
 
-    public Task (TaskDTO taskDTO){
-        this.content = taskDTO.getContent();
+    public Task(User owner, Team contributors) {
+        this.owner = owner;
+        this.contributors = contributors;
     }
 }

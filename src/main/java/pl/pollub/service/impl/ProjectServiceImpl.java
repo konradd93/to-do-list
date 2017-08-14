@@ -1,4 +1,4 @@
-package pl.pollub.service;
+package pl.pollub.service.impl;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,7 @@ import pl.pollub.model.project.DTO.ProjectDTO;
 import pl.pollub.model.project.Project;
 import pl.pollub.model.project.converter.ProjectDtoToEntityConverter;
 import pl.pollub.repository.ProjectRepository;
+import pl.pollub.service.ProjectService;
 
 import java.util.List;
 

@@ -13,9 +13,10 @@ public class TaskDtoToEntityConverter implements Converter<TaskDTO,Task> {
     @Override
     public Task convert(TaskDTO taskDTO) {
         Task task = new Task();
+        task.setOwner(taskDTO.getOwner());
         task.setContent(taskDTO.getContent());
         task.setProject(taskDTO.getProject());
-        task.setTeam(taskDTO.getTeam());
+        task.setContributors(taskDTO.getContributors());
         task.setDone(taskDTO.isDone());
         return task;
     }
