@@ -13,4 +13,6 @@ public class Task {
 
     private final List<Integer> contributors;
 
+    private final boolean hasPaidForSms;
+
 }

@@ -15,12 +15,11 @@ public class TaskServiceTestWithoutMockito {
     EmailNotifier emailNotifier;
     TaskService taskService;
 
-
     @Before
     public void setUp(){
         emailNotifier = new EmailNotifierImpl();
         userService = new UserServiceImpl();
-        taskService = new TaskService(userService,emailNotifier);
+        taskService = new TaskService(userService,emailNotifier,TaskSummariser.getInstance());
     }
 
     @Test
@@ -41,5 +40,4 @@ public class TaskServiceTestWithoutMockito {
             userService.createUser(new User(i, "user" + (i+1) + "@wp.pl" ));
         }
     }
-
 }

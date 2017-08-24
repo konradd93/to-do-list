@@ -23,6 +23,9 @@ public class TaskServiceTest {
     @Mock
     EmailNotifier emailNotifier;
 
+    @Mock
+    TaskSummariser taskSummariser;
+
     @InjectMocks
     TaskService taskService;
 

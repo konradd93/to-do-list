@@ -17,6 +17,8 @@ public class TaskService {
 
     private final AtomicInteger counter = new AtomicInteger();
 
+    private final TaskSummariser taskSummariser;
+
     public Task createTaskForUser(int userId, Integer... contributors){
         Task task = new Task(counter.incrementAndGet(), userId,
                  contributors != null ? Arrays.asList(contributors) : Collections.emptyList());
@@ -36,6 +38,7 @@ public class TaskService {
                                     .collect(Collectors.toSet());
 
         emailNotifier.notify(taskId, emails);
+        taskSummariser.add(task);
     }
 
 }

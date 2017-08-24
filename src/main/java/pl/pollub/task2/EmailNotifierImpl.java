@@ -7,9 +7,14 @@ public class EmailNotifierImpl implements EmailNotifier {
 
     private Collection<String> notified = new HashSet<>();
 
-    @Override
+   /* @Override
     public void notify(int taskId, Collection<String> emails) {
         notified.addAll(emails);
+    }*/
+
+    @Override
+    public void notify(Task task){
+        //notified.addAll(emails);
     }
 
     @Override
